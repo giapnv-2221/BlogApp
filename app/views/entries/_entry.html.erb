@@ -1,10 +1,10 @@
 <li id="entry-<%= entry.id %>">
-  <%= link_to gravatar_for(entry.user, size:Settings.entries_blog.size), entry.user %>
+  <%= link_to gravatar_for(entry.user,
+    size:Settings.entries_blog.size), entry.user %>
   <span class="user"><%= link_to entry.user.name, entry.user %></span>
   <span class="content">
     <h3><%= entry.title %></h3>
     <%= entry.content %>
-    <%#= image_tag entry.picture.url if entry.picture? %>
   </span>
   <span class="timestamp">
     <%=raw t("entries.time_ago",

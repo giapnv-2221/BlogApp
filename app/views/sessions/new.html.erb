@@ -6,21 +6,20 @@
       <div class="form-group">
         <%= f.label t "sessions.username" %>
         <%= f.text_field :email, class: "form-control",
-                         placeholder: t("sessions.username") %>
+          placeholder: t("sessions.username") %>
       </div>
       <div class="form-group">
         <%= f.label t "sessions.password" %>
         <%= f.password_field :password, class: "form-control",
-                             placeholder: t("sessions.password") %>
+          placeholder: t("sessions.password") %>
       </div>
       <div class="form-check">
         <%= f.check_box :remember_me, "class":"form-check-input",
-                        "id":"exampleCheck1"  %>
+          "id":"exampleCheck1"  %>
         <label class="form-check-label" for="exampleCheck1">
           <%= t "sessions.remember_me" %>
         </label>
       </div>
-
       <%= f.submit t "sessions.login", class: "btn btn-primary" %>
     <% end %>
     <p>
