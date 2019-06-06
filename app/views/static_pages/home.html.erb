@@ -1,0 +1,37 @@
+<% provide :title, t("static-pages.home.title") %>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render "shared/user_info" %>
+      </section>
+      <section class="stats">
+        <%= render "shared/stats" %>
+      </section>
+      <section class="micropost_form">
+        <%= render "shared/entry_form" %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3><%= t "entries.tittle" %></h3>
+      <%= render "shared/feed" %>
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <aside class="row">
+      <div class="center jumbotron">
+        <h2>
+          <%= link_to t("app-name"), root_url %>
+        </h2>
+        <%= link_to t("static-pages.home.signup"),
+                    signup_path, class: "btn btn-lg btn-primary" %>
+      </div>
+    </aside>
+    <div class="col-md-8">
+      <h3><%= t "entries.tittle" %></h3>
+      <%= render "shared/feed" %>
+    </div>
+  </div>
+
+<% end %>

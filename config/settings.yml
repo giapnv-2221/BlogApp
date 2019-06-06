@@ -1,0 +1,26 @@
+rails_host:
+  host: "http://railstutorial.org/"
+  new: "http://news.railstutorial.org/"
+users:
+  expired_time: 2
+  name:
+    min_length: 5
+    max_length: 50
+  email:
+    max_length: 255
+  password:
+    min_length: 6
+    max_length: 32
+  paging:
+    num_per_page: 5
+  edit:
+    gravatar_host: "http://gravatar.com/emails"
+entries_blog:
+  paging:
+    num_per_page: 5
+  content:
+    max_length: 140
+  size: 50
+  default_size: 80
+  image:
+    max_size: 5

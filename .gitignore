@@ -25,3 +25,10 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+#ignore rubymine config 
+/.idea/*
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml

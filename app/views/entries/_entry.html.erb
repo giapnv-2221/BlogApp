@@ -1,0 +1,18 @@
+<li id="entry-<%= entry.id %>">
+  <%= link_to gravatar_for(entry.user, size:Settings.entries_blog.size), entry.user %>
+  <span class="user"><%= link_to entry.user.name, entry.user %></span>
+  <span class="content">
+    <h3><%= entry.title %></h3>
+    <%= entry.content %>
+    <%#= image_tag entry.picture.url if entry.picture? %>
+  </span>
+  <span class="timestamp">
+    <%=raw t("entries.time_ago",
+      time:time_ago_in_words(entry.created_at)) %>
+    <%= link_to "Details", entry %>
+    <% if current_user==entry.user %>
+      <%= link_to t("entries.delete"),
+        entry, method: :delete, data: {confirm: t("users.alert.sure")} %>
+    <% end  %>
+  </span>
+</li>
