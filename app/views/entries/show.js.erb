@@ -1,2 +1,2 @@
 $(".comments").html("<%= escape_javascript(render @comments) %>");
-$(".paging-rails").html("<%= escape_javascript(paginate @comments,theme: "twitter-bootstrap-3") %>");
+$(".paging-rails").html("<%= escape_javascript(paginate @comments, remote:true, theme: "twitter-bootstrap-3") %>");

@@ -1,2 +1,2 @@
+$("#comment_content").val("");
 $(".comments").html("<%= escape_javascript(render partial: 'comment', collection: @comments) %>");
-$(".paging-rails").html("<%= escape_javascript(paginate @comments, params: {controller: 'entries'},theme: "twitter-bootstrap-3") %>");

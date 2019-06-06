@@ -2,17 +2,8 @@ class EntriesController < ApplicationController
   before_action :logged_in_user, only: %i(create destroy)
   before_action :correct_user , only: %i(destroy)
 
-  def index
-    @entry = Entry.find_by id: params[:entry_id]
-    @comments = @entry.comments.recent.page(params[:page]).per 5
-    @comment = Comment.new
-    respond_to do |format|
-      format.html { redirect_to root_url unless @entry }
-      format.js
-    end
-  end
-
   def show
+    store_location
     @entry = Entry.find_by id: params[:id]
     @comments = @entry.comments.recent.page(params[:page]).per 5
     @comment = Comment.new

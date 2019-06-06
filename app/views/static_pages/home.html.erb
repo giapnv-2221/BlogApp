@@ -1,4 +1,4 @@
-<% provide :title, t("static-pages.home.title")  %>
+<% provide :title, t("static-pages.home.title") %>
 <% if logged_in? %>
   <div class="row">
     <aside class="col-md-4">
@@ -18,11 +18,20 @@
     </div>
   </div>
 <% else %>
-  <div class="center jumbotron">
-    <h2>
-      <%= link_to t("app-name"), root_url %>
-    </h2>
-    <%= link_to t("static-pages.home.signup"),
-                signup_path, class: "btn btn-lg btn-primary" %>
+  <div class="row">
+    <aside class="row">
+      <div class="center jumbotron">
+        <h2>
+          <%= link_to t("app-name"), root_url %>
+        </h2>
+        <%= link_to t("static-pages.home.signup"),
+                    signup_path, class: "btn btn-lg btn-primary" %>
+      </div>
+    </aside>
+    <div class="col-md-8">
+      <h3><%= t "entries.tittle" %></h3>
+      <%= render "shared/feed" %>
+    </div>
   </div>
-  <% end %>
+
+<% end %>
