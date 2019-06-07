@@ -6,9 +6,9 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",
-           foreign_key: "follower_id",dependent: :destroy
+    foreign_key: "follower_id",dependent: :destroy
   has_many :passive_relationships, class_name: "Relationship",
-           foreign_key: "followed_id", dependent: :destroy
+    foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
@@ -16,12 +16,16 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_PASSWORD_REGEX = /[A-Z][a-z]\d/i
 
-  validates :name, presence: true, length: {minimum: Settings.users.name.min_length,
-                                            maximum: Settings.users.name.max_length}
-  validates :email, presence:true, length: {maximum: Settings.users.email.max_length},
-            format: {with: VALID_EMAIL_REGEX }
-  validates :password, presence:true, length: {minimum: Settings.users.password.min_length, maximum: Settings.users.password.max_length},
-            format: {with: VALID_PASSWORD_REGEX}, allow_nil: true
+  validates :name, presence: true,
+    length: {minimum: Settings.users.name.min_length,
+      maximum: Settings.users.name.max_length}
+  validates :email, presence:true,
+    length: {maximum: Settings.users.email.max_length},
+      format: {with: VALID_EMAIL_REGEX }, uniqueness: true
+  validates :password, presence:true, length:
+    {minimum: Settings.users.password.min_length,
+      maximum: Settings.users.password.max_length},
+        format: {with: VALID_PASSWORD_REGEX}, allow_nil: true
   has_secure_password
 
   scope :get_list, ->{select("id,name,email")}
@@ -77,7 +81,7 @@ class User < ApplicationRecord
   class << self
     def digest string
       cost = ActiveModel::SecurePassword.min_cost ?
-                 BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+        BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
       BCrypt::Password.create string, cost: cost
     end
 

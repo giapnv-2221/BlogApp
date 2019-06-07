@@ -50,7 +50,8 @@ class UsersController < ApplicationController
     @title = "Following"
     @user  = User.find_by id: params[:id]
     if @user
-      @users = @user.following.page(params[:page]).per Settings.users.paging.num_per_page
+      @users = @user.following.
+        page(params[:page]).per Settings.users.paging.num_per_page
       render "show_follow"
     else
       redirect_to user_path
